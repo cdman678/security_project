@@ -1,0 +1,6 @@
+MBSetup.exe:
+https://www.malwarebytes.com/mwb-download
+
+COVID-19 Phishing malware:
+https://github.com/MalwareSamples/Malware-Feed/tree/master/2020.06.22_FBI-FLASH-MI-000124-MW
+
