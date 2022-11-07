@@ -95,14 +95,8 @@ class FeatureExtractor:
         return res
 
     def getCharacteristics(self, peData, fileData):
- 
- 
-
-
         self.characteristics.append(['ID', 1])#Represents the nunber in the dataset, could put anything here.
- 
         self.characteristics.append(['md5',hashlib.md5(fileData.read()).hexdigest()])
-
         self.characteristics.append(['Machine',peData.FILE_HEADER.Machine])
         self.characteristics.append(['SizeOfOptionalHeader', peData.FILE_HEADER.SizeOfOptionalHeader]) 
         self.characteristics.append(['Characteristics',peData.FILE_HEADER.Characteristics]) 
@@ -213,7 +207,7 @@ class FeatureExtractor:
 
 
 
-newFeatureExtractor = FeatureExtractor(path='b.exe')
-attributesToTest_df = newFeatureExtractor.getFileFeatures()
-print(attributesToTest_df.head())
-attributesToTest_df.to_csv("data3.csv",index=False)  #uncomment if you want to see dataframe written to file
+#newFeatureExtractor = FeatureExtractor(path='b.exe')
+#attributesToTest_df = newFeatureExtractor.getFileFeatures()
+#print(attributesToTest_df.head())
+#attributesToTest_df.to_csv("data3.csv",index=False)  #uncomment if you want to see dataframe written to file
