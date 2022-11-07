@@ -16,7 +16,6 @@ class FeatureExtractor:
         # Opens and reads file from users provided path.
         # Ultimately close file after reading characteristics
         ###
-        df = pd.DataFrame
         try:
             fileData = open(self.path, mode='rb')
             peData =  pefile.PE(self.path)
@@ -114,7 +113,11 @@ class FeatureExtractor:
         self.characteristics.append(['SizeOfUninitializedData',peData.OPTIONAL_HEADER.SizeOfUninitializedData])
         self.characteristics.append(['AddressOfEntryPoint',peData.OPTIONAL_HEADER.AddressOfEntryPoint])
         self.characteristics.append(['BaseOfCode',peData.OPTIONAL_HEADER.BaseOfCode])
-        self.characteristics.append(['BaseOfData',peData.OPTIONAL_HEADER.BaseOfData])
+        try:
+            self.characteristics.append(['BaseOfData',peData.OPTIONAL_HEADER.BaseOfData])
+        except AttributeError:
+            self.characteristics.append(['BaseOfData',0])
+
         self.characteristics.append(['ImageBase',peData.OPTIONAL_HEADER.ImageBase])
         self.characteristics.append(['SectionAlignment',peData.OPTIONAL_HEADER.SectionAlignment])
         self.characteristics.append(['FileAlignment',peData.OPTIONAL_HEADER.FileAlignment])
@@ -210,7 +213,7 @@ class FeatureExtractor:
 
 
 
-newFeatureExtractor = FeatureExtractor(path='SteamSetup.exe')
+newFeatureExtractor = FeatureExtractor(path='b.exe')
 attributesToTest_df = newFeatureExtractor.getFileFeatures()
 print(attributesToTest_df.head())
 attributesToTest_df.to_csv("data3.csv",index=False)  #uncomment if you want to see dataframe written to file
