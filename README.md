@@ -26,3 +26,5 @@ The modeling aspect of the project is created via the Python sklearn library
 
 The Repo here contains most of what is needed to replicate the project.
 To fully replicate the project, you will need to download the entire Dike Dataset from the URL provided above.
+
+### Important Note: The Malicious Files in this repo are REAL! Please Handle with care!
